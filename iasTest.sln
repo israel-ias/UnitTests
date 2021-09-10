@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EE87F2A6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.Core.Tests", "Bongo.Core.Tests\Bongo.Core.Tests.csproj", "{F6D8A3D3-EE74-4217-B7C7-0C414E4F87C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bongo.Web.Tests", "Bongo.Web.Tests\Bongo.Web.Tests.csproj", "{A613D2AE-AB55-4B43-BBFE-E95EF78D11BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{F6D8A3D3-EE74-4217-B7C7-0C414E4F87C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6D8A3D3-EE74-4217-B7C7-0C414E4F87C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6D8A3D3-EE74-4217-B7C7-0C414E4F87C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A613D2AE-AB55-4B43-BBFE-E95EF78D11BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A613D2AE-AB55-4B43-BBFE-E95EF78D11BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A613D2AE-AB55-4B43-BBFE-E95EF78D11BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A613D2AE-AB55-4B43-BBFE-E95EF78D11BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +100,7 @@ Global
 		{FB02D0E4-3F7C-421D-ADA6-DC033A2CA537} = {42DB5480-6B64-4F3B-96C3-095647F2A103}
 		{EE87F2A6-060A-469C-886A-97C2DB3FCAA7} = {42DB5480-6B64-4F3B-96C3-095647F2A103}
 		{F6D8A3D3-EE74-4217-B7C7-0C414E4F87C1} = {EE87F2A6-060A-469C-886A-97C2DB3FCAA7}
+		{A613D2AE-AB55-4B43-BBFE-E95EF78D11BE} = {EE87F2A6-060A-469C-886A-97C2DB3FCAA7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1AB4CB25-B062-471C-9E8D-6372F87CFA5F}
