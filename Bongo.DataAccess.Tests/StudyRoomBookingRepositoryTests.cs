@@ -10,6 +10,14 @@ public class StudyRoomBookingRepositoryTests
 {
     private StudyRoomBooking studyRoomBooking_One;
     private StudyRoomBooking studyRoomBooking_Two;
+    private DbContextOptions<ApplicationDbContext> _options;
+
+    [SetUp]
+    public void SetUp()
+    {
+        _options = new DbContextOptionsBuilder<ApplicationDbContext>()
+            .UseInMemoryDatabase(databaseName: "temp_bongo").Options;
+    }
 
     public StudyRoomBookingRepositoryTests()
     {
@@ -35,18 +43,14 @@ public class StudyRoomBookingRepositoryTests
     }
 
     [Test]
-    [Order(1)]
     public void SaveBooking_Booking_CheckTheValuesFromDatabase()
     {
-        var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase(databaseName: "temp_bongo").Options;
-
-        using var context = new ApplicationDbContext(options);
+        using var context = new ApplicationDbContext(_options);
         var repository = new StudyRoomBookingRepository(context);
         repository.Book(studyRoomBooking_One);
 
 
-        using var ctx = new ApplicationDbContext(options);
+        using var ctx = new ApplicationDbContext(_options);
         var bookingFromDb = ctx.StudyRoomBookings.FirstOrDefault(u => u.BookingId == 9);
         Assert.AreEqual(studyRoomBooking_One.FirstName, bookingFromDb.FirstName);
         Assert.AreEqual(studyRoomBooking_One.LastName, bookingFromDb.LastName);
@@ -58,20 +62,19 @@ public class StudyRoomBookingRepositoryTests
     }
 
     [Test]
-    [Order(2)]
     public void GetAllBooking_BookingOneAndTwo_CheckTheValuesFromDatabase()
     {
         var expectedResult = new List<StudyRoomBooking>{ studyRoomBooking_One, studyRoomBooking_Two};
-        var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-            .UseInMemoryDatabase(databaseName: "temp_bongo").Options;
+       
 
-        using var context = new ApplicationDbContext(options);
+        using var context = new ApplicationDbContext(_options);
+        context.Database.EnsureDeleted();
         var repository = new StudyRoomBookingRepository(context);
-        //repository.Book(studyRoomBooking_One);
+        repository.Book(studyRoomBooking_One);
         repository.Book(studyRoomBooking_Two);
 
         List<StudyRoomBooking> actualList;
-        using var ctx = new ApplicationDbContext(options);
+        using var ctx = new ApplicationDbContext(_options);
         var rep = new StudyRoomBookingRepository(ctx);
         actualList = rep.GetAll(null).ToList();
 
